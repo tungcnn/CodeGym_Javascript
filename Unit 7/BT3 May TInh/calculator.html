@@ -7,51 +7,55 @@
     </head>
     <body>
         <h1>Calculator</h1>
-        <p>Thực ra chỉ dùng được phép toán cơ bản thôi :D nửa bên trái cho đẹp</p>
-        <table>
+        <table class="expressionzone">
+            <tr>
+                <td colspan="7"><input type="text" id="previousexpression" class="previousexpression"></td>
+            </tr>
             <tr>
                 <td colspan="7"><input type="text" id="expression"></td>
             </tr>
+        </table>
+        <table>
             <tr>
-                <td><input type="button" value="Rad"></td>
-                <td><input type="button" value="Deg"></td>
-                <td><input type="button" value="x!"></td>
+                <td><input type="button" value="Rad" onclick="saySomething()"></td>
+                <td><input type="button" value="Deg" onclick="saySomething()"></td>
+                <td><input type="button" value="x!" onclick="saySomething()"></td>
                 <td><input type="button" value="(" onclick="display('(')"></td>
                 <td><input type="button" value=")" onclick="display(')')"></td>
                 <td><input type="button" value="%" onclick="display('%')"></td>
-                <td><input type="button" value="AC" onclick="document.getElementById('expression').value = ' '"></td>
+                <td><input type="button" value="CE" id="ce" onclick="CE()"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Inv"></td>
-                <td><input type="button" value="sin"></td>
-                <td><input type="button" value="ln"></td>
+                <td><input type="button" value="Inv" onclick="saySomething()"></td>
+                <td><input type="button" value="sin" onclick="sin()"></td>
+                <td><input type="button" value="ln" onclick="ln()"></td>
                 <td><input type="button" class="number" value="7" onclick="display('7')"></td>
                 <td><input type="button" class="number" value="8" onclick="display('8')"></td>
                 <td><input type="button" class="number" value="9" onclick="display('9')"></td>
                 <td><input type="button" value="÷" onclick="display('/')"></td>
             </tr>
             <tr>
-                <td><input type="button" value="π"></td>
-                <td><input type="button" value="cos"></td>
-                <td><input type="button" value="log"></td>
+                <td><input type="button" value="π" onclick="display('3.1415')"></td>
+                <td><input type="button" value="cos" onclick="cos()"></td>
+                <td><input type="button" value="log" onclick="log()"></td>
                 <td><input type="button" class="number" value="4" onclick="display('4')"></td>
                 <td><input type="button" class="number" value="5" onclick="display('5')"></td>
                 <td><input type="button" class="number" value="6" onclick="display('6')"></td>
                 <td><input type="button" value="x" onclick="display('*')"></td>
             </tr>
             <tr>
-                <td><input type="button" value="e"></td>
-                <td><input type="button" value="tan"></td>
-                <td><input type="button" value="√"></td>
+                <td><input type="button" value="e" onclick="display('2.718281828459')"></td>
+                <td><input type="button" value="tan" onclick="tan()"></td>
+                <td><input type="button" value="√" onclick="squareRoot()"></td>
                 <td><input type="button" class="number" value="1" onclick="display('1')"></td>
                 <td><input type="button" class="number" value="2" onclick="display('2')"></td>
                 <td><input type="button" class="number" value="3" onclick="display('3')"></td>
                 <td><input type="button" value="-" onclick="display('-')"></td>
             </tr>
             <tr>
-                <td><input type="button" value="Ans"></td>
-                <td><input type="button" value="EXP"></td>
-                <td><input type="button" value="x^"></td>
+                <td><input type="button" value="Ans" onclick="ans()"></td>
+                <td><input type="button" value="EXP" onclick="exp()"></td>
+                <td><input type="button" value="x^" onclick="power()"></td>
                 <td><input type="button" class="number" value="0" onclick="display('0')"></td>
                 <td><input type="button" class="number" value="." onclick="display('.')"></td>
                 <td><input type="button" class="equal" value="=" onclick="calculate()"></td>
