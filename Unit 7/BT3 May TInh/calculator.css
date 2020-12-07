@@ -1,0 +1,18 @@
+input[type=button] {
+    width: 100px;
+    height: 40px;
+    font-size: large;
+    background-color: #dadce0;
+    border-radius: 4px;
+}
+input[type=text] {
+    width: 98%;
+    height: 30px;
+}
+input.number {
+    background-color: #f1f3f4;
+}
+input.equal {
+    background-color: #4285f4;
+    font-weight: bold;
+}
