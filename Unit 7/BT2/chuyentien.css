@@ -1,0 +1,13 @@
+td {
+    width: 150px;
+    text-align: center;
+}
+select {
+    width: 100px;
+}
+button {
+    background-color: lightblue;
+    width: 90px;
+    font-weight: bold;
+    color: white;
+}
