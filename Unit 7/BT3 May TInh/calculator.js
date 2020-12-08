@@ -1,4 +1,21 @@
 let _calculated = false;
+let currentExpression;
+
+function randomColor(x) {
+    var color = Math.floor(Math.random()*16777215).toString(16);
+    x.style.backgroundColor = "#"+color;
+}
+function rollbackColor(x, y) {
+    x.style.backgroundColor = y;
+}
+function handle(type){
+    currentExpression = document.getElementById("expression").value;
+    if(type == "CE"){
+        CE(currentExpression)
+    } else if(type == "calculate"){
+        calculate(currentExpression);
+    }
+}
 function display(val) {
     if (_calculated) {
         CE();
@@ -7,19 +24,16 @@ function display(val) {
         document.getElementById("expression").value += val;
     } 
 }
-function calculate() {
-    let currentExpression = document.getElementById("expression").value;
+function calculate(currentExpression) { 
     document.getElementById("previousexpression").value = currentExpression;
-
     let result = +eval(currentExpression).toFixed(4);
     document.getElementById("expression").value = result;
     _calculated = true;
 }
-function CE() {
-    let currentExpression = document.getElementById("expression").value;
+function CE(currentExpression) {
     if (_calculated) {
-        document.getElementById("previousexpression").value = currentExpression;
-        document.getElementById('expression').value = '';
+        document.getElementById("previousexpression").value = document.getElementById("expression").value;
+        document.getElementById("expression").value = '';
     } else {
         currentExpression = currentExpression.slice(0, -1);
         document.getElementById('expression').value = currentExpression;
