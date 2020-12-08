@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>BMI calculator</title>
+    <style>
+        div {
+            text-align: center;
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type=text] {
+            margin: 20px;
+        }
+        button {
+            font-size: large;
+        }
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        p {
+            font-weight: bold;
+            font-style: italic;
+            font-size: large;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>BMI calculator</h1>
+        <table>
+            <tr>
+                <th>Weight (kg)</th>
+                <th>Height (m)</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="weight" placeholder="weight"></td>
+                <td><input type="text" id="height" placeholder="height"></td>
+            </tr>
+        </table>
+        <button onclick="calculate()">Calculate BMI</button>
+        <p id="bmi"></p>
+        <p id="category"></p>
+    </div>
+    <script>
+        function calculate() {
+            let weight = document.getElementById("weight").value;
+            let height = document.getElementById("height").value;
+            let bmi = weight / (height ** 2);
+
+            document.getElementById("bmi").innerHTML = "Your bmi is: " + bmi.toFixed(2);
+            if (bmi < 18)
+                document.getElementById("category").innerHTML = "You are underweight";
+            else if (bmi < 25.0)
+                document.getElementById("category").innerHTML = "You are normal";
+            else if (bmi < 30.0)
+                document.getElementById("category").innerHTML = "You are overweight";
+            else
+                document.getElementById("category").innerHTML = "You are obese";
+        }
+    </script>
+</body>
+
+</html>
