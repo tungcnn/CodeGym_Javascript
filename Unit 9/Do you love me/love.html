@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utd-8">
+        <title>You have to love me</title>
+        <style>
+            input[type=button] {
+                font-size: large;
+                width: 100px;
+                height: 50px;
+            }
+            h1{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Do you love me</h1>
+        <input type="button" value="YES" onclick="alert('Good choice')" style="margin-left: 900px;">
+        <input type="button" id="btnno" value="no" style="position: relative; left: 0; top: 0;" onmouseover="run(this)">
+        <script>
+            function run(btn) {
+                let x = Math.floor(Math.random()*(window.innerHeight - 0));
+                let y = Math.floor(Math.random()*(window.innerWidth - 0));
+                console.log(x);
+                console.log(y);
+                let btnno = document.getElementById("btnno");
+                btnno.style.left = y + "px";
+                btnno.style.top = x + "px";
+            }
+        </script>
+    </body>
+</html>
