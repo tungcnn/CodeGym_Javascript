@@ -1,0 +1,39 @@
+h1 {
+    text-align: center;
+}
+input[type=button] {
+    width: 100px;
+    height: 40px;
+    font-size: large;
+    background-color: #dadce0;
+    border-radius: 4px;
+}
+input[type=text] {
+    width: 98%;
+    height: 30px;
+    text-align: right;
+    font-size: large;
+    border: 0px;
+}
+input.previousexpression {
+    font-size: small;
+}
+input.number {
+    background-color: #f1f3f4;
+}
+input.equal {
+    background-color: #4285f4;
+    font-weight: bold;
+}
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+.expressionzone {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 722px;
+    border: 1px gray solid;
+    border-radius: 4px;
+}
