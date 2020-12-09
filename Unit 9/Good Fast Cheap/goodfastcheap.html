@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Good fast cheap</title>
+</head>
+
+<body>
+    <p id="good" onclick="changeColor(this)" style="color: black;">Good</p>
+    <p id="cheap" onclick="changeColor(this)" style="color: black;">Cheap</p>
+    <p id="fast" onclick="changeColor(this)" style="color: black;">Fast</p>
+</body>
+<script>
+    function changeColor(word) {
+        let good = document.getElementById("good");
+        let fast = document.getElementById("fast");
+        let cheap = document.getElementById("cheap");
+
+        if (word.style.color == "black") {
+            word.style.color = "blue";
+            if (word.id == "good") {
+                if (fast.style.color == "blue" && cheap.style.color == "blue") {
+                    fast.style.color = "black";
+                }
+            }
+            else if (word.id == "cheap") {
+                if (fast.style.color == "blue" && good.style.color == "blue") {
+                    good.style.color = "black";
+                }
+            } else {
+                if (good.style.color == "blue" && cheap.style.color == "blue") {
+                    cheap.style.color = "black";
+                }
+            }
+        }
+    }    
+
+</script>
+
+</html>
