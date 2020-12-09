@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tinh Ngay Thang</title>
+    </head>
+    <body>
+        <h1>Tính số ngày 1 tháng</h1>
+        <table>
+            <tr>
+                <td><input type="text" id="month"></td>
+                <td><button onclick="display()">Tính số ngày</button></td>
+            </tr>
+        </table>
+        <p id="days"></p>
+        <script>
+            function display() {
+                let month = parseInt(document.getElementById("month").value);
+                switch(month) {
+                    case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                        document.getElementById("days").innerHTML = "Tháng " + month + " có 31 ngày.";
+                        break;
+                    case 2:
+                        document.getElementById("days").innerHTML =  "Tháng " + month + " có 28 hoặc 29 ngày.";
+                        break;
+                    case 4: case 6: case 9: case 11:
+                        document.getElementById("days").innerHTML = "Tháng " + month + " có 30 ngày.";
+                        break;
+                    default:
+                        alert("You didnt enter a proper month");
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>
