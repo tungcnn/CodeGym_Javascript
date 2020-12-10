@@ -29,9 +29,9 @@
     <div>
         <img src="images/panda1.jpg" id="img1" onclick="randomPhoto(this, 1)">
         <img src="images/monkey2.jpg" id="img2" onclick="randomPhoto(this, 2)">
-        <img src="images/cat3.jpg" id="img3" onclick="randomPhoto(this,3)">
-        <img src="images/panda4.jpg" id="img4" onclick="randomPhoto(this,4)">
-        <img src="images/cat5.jpg" id="img5" onclick="randomPhoto(this,5)">
+        <img src="images/cat3.jpg" id="img3" onclick="randomPhoto(this, 3)">
+        <img src="images/panda4.jpg" id="img4" onclick="randomPhoto(this, 4)">
+        <img src="images/cat5.jpg" id="img5" onclick="randomPhoto(this, 5)">
         <p id="message"></p>
     </div>
     <script>
@@ -44,36 +44,27 @@
                 elm.src = img;
             }
         }
+        function getSrc(id) {
+            return document.getElementById(id).getAttribute("src");
+        }
+        function compareImg(pic1, pic2, pic3, pic4, pic5, picName) {
+            var src1 = getSrc("img1");
+            var src2 = getSrc("img2");
+            var src3 = getSrc("img3");
+            var src4 = getSrc("img4");
+            var src5 = getSrc("img5");
+            if (src1 == pic1 && src2 == pic2 && src3 == pic3 && src4 == pic4 && src5 == pic5) {
+                document.getElementById("message").innerHTML = "You found the "+ picName;
+            }
+        }
         function randomPhoto(elm, no) {
             var cat = "images/cat" + no + ".jpg";
             var monkey = "images/monkey" + no + ".jpg";
             var panda = "images/panda" + no + ".jpg";
             changeImg(elm, cat, monkey, panda);
-            
-            var isCat = document.getElementById("img1").getAttribute("src") == "images/cat1.jpg" &&
-                document.getElementById("img2").getAttribute("src") == "images/cat2.jpg" &&
-                document.getElementById("img3").getAttribute("src") == "images/cat3.jpg" &&
-                document.getElementById("img4").getAttribute("src") == "images/cat4.jpg" &&
-                document.getElementById("img5").getAttribute("src") == "images/cat5.jpg";
-            var isMonkey = document.getElementById("img1").getAttribute("src") == "images/monkey1.jpg" &&
-                document.getElementById("img2").getAttribute("src") == "images/monkey2.jpg" &&
-                document.getElementById("img3").getAttribute("src") == "images/monkey3.jpg" &&
-                document.getElementById("img4").getAttribute("src") == "images/monkey4.jpg" &&
-                document.getElementById("img5").getAttribute("src") == "images/monkey5.jpg";
-            var isPanda = document.getElementById("img1").getAttribute("src") == "images/panda1.jpg" &&
-                document.getElementById("img2").getAttribute("src") == "images/panda2.jpg" &&
-                document.getElementById("img3").getAttribute("src") == "images/panda3.jpg" &&
-                document.getElementById("img4").getAttribute("src") == "images/panda4.jpg" &&
-                document.getElementById("img5").getAttribute("src") == "images/panda5.jpg";
-            if (isCat) {
-                document.getElementById("message").innerHTML = "You found the funny cat!";
-            } else if (isMonkey) {
-                document.getElementById("message").innerHTML = "You found the monkey!";
-            } else if (isPanda) {
-                document.getElementById("message").innerHTML = "You found the panda!";
-            } else {
-                document.getElementById("message").innerHTML = "Keep trying!"
-            }
+            compareImg("images/cat1.jpg", "images/cat2.jpg", "images/cat3.jpg", "images/cat4.jpg", "images/cat5.jpg", "cat")
+            compareImg("images/monkey1.jpg", "images/monkey2.jpg", "images/monkey3.jpg", "images/monkey4.jpg", "images/monkey5.jpg", "monkey")
+            compareImg("images/panda1.jpg", "images/panda2.jpg", "images/panda3.jpg", "images/panda4.jpg", "images/panda5.jpg", "panda")
         }
     </script>
 </body>
