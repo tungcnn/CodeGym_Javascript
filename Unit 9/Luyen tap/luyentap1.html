@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Luyen tap 1</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+        div {
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            padding: 20px;
+            border: 1px solid black;
+            margin-top: 20px;
+            background-color: #fae7aa;
+        }
+        button {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>Bài 1: a chia hết cho b?</p>
+        <label for="numbera">Nhập số a</label><br>
+        <input type="text" id="numbera"><br>
+        <label for="numberb">Nhập số b</label><br>
+        <input type="text" id="numberb"><br>
+        <button onclick="checkDivision()">Check</button><br>
+        <span>Kết quả: </span><span id="result1"></span>
+        <hr>
+
+        <p>Bài 2: Đủ tuổi lên lớp 10?</p>
+        <label for="age">Nhập số tuổi</label><br>
+        <input type="text" id="age"><br>
+        <button onclick="checkAge()">Check</button><br>
+        <span>Kết quả: </span><span id="result2"></span>
+        <hr>
+
+        <p>Bài 3: so sánh với 0</p>
+        <label for="intnumber">Nhập số nguyên</label><br>
+        <input type="text" id="intnumber"><br>
+        <button onclick="checkZero()">Check</button><br>
+        <span>Kết quả: </span><span id="result3"></span>
+        <hr>
+
+        <p>Bài 4: Tìm GTLN</p>
+        <label for="number1">Nhập số nguyên 1</label><br>
+        <input type="text" id="number1"><br>
+        <label for="number2">Nhập số nguyên 2</label><br>
+        <input type="text" id="number2"><br>
+        <label for="number3">Nhập số nguyên 3</label><br>
+        <input type="text" id="number3"><br>
+        <button onclick="findMax()">Check</button><br>
+        <span>Kết quả: </span><span id="result4"></span>
+        <hr>
+
+        <p>Bài 5: Xếp hạng học sinh</p>
+        <label for="test">Nhập điểm kiểm tra</label><br>
+        <input type="text" id="test"><br>
+        <label for="midterm">Nhập điểm giữa kỳ</label><br>
+        <input type="text" id="midterm"><br>
+        <label for="final">Nhập điểm cuối kỳ</label><br>
+        <input type="text" id="final"><br>
+        <button onclick="rankStudent()">Check</button><br>
+        <span>Kết quả: </span><span id="result5"></span>
+        <hr>
+
+        <p>Bài 6: Tính hoa hồng</p>
+        <label for="sales">Nhập doanh số (VND)</label><br>
+        <input type="text" id="sales"><br>
+        <button onclick="checkBonus()">Check</button><br>
+        <span>Kết quả: </span><span id="result6"></span>
+        <hr>
+
+        <p>Bài 7: <br> Tình cước điện thoại <br>600 đồng cho 50p đầu tiên <br>400 đồng cho mỗi phút của 150p tiếp theo
+            <br>200 đồng cho mỗi phút sau 200p đầu tiên </p>
+        <label for="minutes">Nhập số phút </label><br>
+        <input type="text" id="minutes"><br>
+        <button onclick="checkPhoneFee()">Check</button><br>
+        <span>Kết quả: </span><span id="result7"></span>
+    </div>
+    <script src="luyentap1.js"></script>
+</body>
+
+</html>
