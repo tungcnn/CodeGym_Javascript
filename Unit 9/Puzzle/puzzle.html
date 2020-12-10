@@ -11,10 +11,12 @@
             margin-right: auto;
             text-align: center;
         }
+
         img {
             width: 600px;
             height: 120px;
         }
+
         p {
             font-size: 30px;
             color: red;
@@ -22,80 +24,47 @@
         }
     </style>
 </head>
+
 <body>
     <div>
-        <img src="images/panda1.jpg" id="img1" onclick="randomPhoto(this)">
-        <img src="images/monkey2.jpg" id="img2" onclick="randomPhoto(this)">
-        <img src="images/cat3.jpg" id="img3" onclick="randomPhoto(this)">
-        <img src="images/panda4.jpg" id="img4" onclick="randomPhoto(this)">
-        <img src="images/cat5.jpg" id="img5" onclick="randomPhoto(this)">
+        <img src="images/panda1.jpg" id="img1" onclick="randomPhoto(this, 1)">
+        <img src="images/monkey2.jpg" id="img2" onclick="randomPhoto(this, 2)">
+        <img src="images/cat3.jpg" id="img3" onclick="randomPhoto(this,3)">
+        <img src="images/panda4.jpg" id="img4" onclick="randomPhoto(this,4)">
+        <img src="images/cat5.jpg" id="img5" onclick="randomPhoto(this,5)">
         <p id="message"></p>
     </div>
     <script>
-        function randomPhoto(img) {
-            switch (img.id) {
-                case "img1":
-                    if (img.getAttribute("src") == "images/cat1.jpg") {
-                        img.src = "images/monkey1.jpg";
-                    } else if (img.getAttribute("src") == "images/monkey1.jpg") {
-                        img.src = "images/panda1.jpg";
-                    } else {
-                        img.src = "images/cat1.jpg";
-                    }
-                    break;
-                case "img2":
-                    if (img.getAttribute("src") == "images/cat2.jpg") {
-                        img.src = "images/monkey2.jpg";
-                    } else if (img.getAttribute("src") == "images/monkey2.jpg") {
-                        img.src = "images/panda2.jpg";
-                    } else {
-                        img.src = "images/cat2.jpg";
-                    }
-                    break;
-                case "img3":
-                    if (img.getAttribute("src") == "images/cat3.jpg") {
-                        img.src = "images/monkey3.jpg";
-                    } else if (img.getAttribute("src") == "images/monkey3.jpg") {
-                        img.src = "images/panda3.jpg";
-                    } else {
-                        img.src = "images/cat3.jpg";
-                    }
-                    break;
-                case "img4":
-                    if (img.getAttribute("src") == "images/cat4.jpg") {
-                        img.src = "images/monkey4.jpg";
-                    } else if (img.getAttribute("src") == "images/monkey4.jpg") {
-                        img.src = "images/panda4.jpg";
-                    } else {
-                        img.src = "images/cat4.jpg";
-                    }
-                    break;
-                case "img5":
-                    if (img.getAttribute("src") == "images/cat5.jpg") {
-                        img.src = "images/monkey5.jpg";
-                    } else if (img.getAttribute("src") == "images/monkey5.jpg") {
-                        img.src = "images/panda5.jpg";
-                    } else {
-                        img.src = "images/cat5.jpg";
-                    }
-                    break;
-                default: break;
+        function changeImg(elm, img, img2, img3) {
+            if (elm.getAttribute("src") == img) {
+                elm.src = img2;
+            } else if (elm.getAttribute("src") == img2) {
+                elm.src = img3;
+            } else {
+                elm.src = img;
             }
-            var isCat = document.getElementById("img1").getAttribute("src") == "images/cat1.jpg" && 
-                    document.getElementById("img2").getAttribute("src") == "images/cat2.jpg" && 
-                    document.getElementById("img3").getAttribute("src") == "images/cat3.jpg" &&
-                    document.getElementById("img4").getAttribute("src") == "images/cat4.jpg" &&
-                    document.getElementById("img5").getAttribute("src") == "images/cat5.jpg";
-            var isMonkey = document.getElementById("img1").getAttribute("src") == "images/monkey1.jpg" && 
-                    document.getElementById("img2").getAttribute("src") == "images/monkey2.jpg" && 
-                    document.getElementById("img3").getAttribute("src") == "images/monkey3.jpg" &&
-                    document.getElementById("img4").getAttribute("src") == "images/monkey4.jpg" &&
-                    document.getElementById("img5").getAttribute("src") == "images/monkey5.jpg";
-            var isPanda = document.getElementById("img1").getAttribute("src") == "images/panda1.jpg" && 
-                    document.getElementById("img2").getAttribute("src") == "images/panda2.jpg" && 
-                    document.getElementById("img3").getAttribute("src") == "images/panda3.jpg" &&
-                    document.getElementById("img4").getAttribute("src") == "images/panda4.jpg" &&
-                    document.getElementById("img5").getAttribute("src") == "images/panda5.jpg";
+        }
+        function randomPhoto(elm, no) {
+            var cat = "images/cat" + no + ".jpg";
+            var monkey = "images/monkey" + no + ".jpg";
+            var panda = "images/panda" + no + ".jpg";
+            changeImg(elm, cat, monkey, panda);
+            
+            var isCat = document.getElementById("img1").getAttribute("src") == "images/cat1.jpg" &&
+                document.getElementById("img2").getAttribute("src") == "images/cat2.jpg" &&
+                document.getElementById("img3").getAttribute("src") == "images/cat3.jpg" &&
+                document.getElementById("img4").getAttribute("src") == "images/cat4.jpg" &&
+                document.getElementById("img5").getAttribute("src") == "images/cat5.jpg";
+            var isMonkey = document.getElementById("img1").getAttribute("src") == "images/monkey1.jpg" &&
+                document.getElementById("img2").getAttribute("src") == "images/monkey2.jpg" &&
+                document.getElementById("img3").getAttribute("src") == "images/monkey3.jpg" &&
+                document.getElementById("img4").getAttribute("src") == "images/monkey4.jpg" &&
+                document.getElementById("img5").getAttribute("src") == "images/monkey5.jpg";
+            var isPanda = document.getElementById("img1").getAttribute("src") == "images/panda1.jpg" &&
+                document.getElementById("img2").getAttribute("src") == "images/panda2.jpg" &&
+                document.getElementById("img3").getAttribute("src") == "images/panda3.jpg" &&
+                document.getElementById("img4").getAttribute("src") == "images/panda4.jpg" &&
+                document.getElementById("img5").getAttribute("src") == "images/panda5.jpg";
             if (isCat) {
                 document.getElementById("message").innerHTML = "You found the funny cat!";
             } else if (isMonkey) {
