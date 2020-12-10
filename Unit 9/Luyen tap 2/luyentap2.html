@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Luyen tap 2</title>
+        <style>
+            body {
+                background-color: lightgreen;
+            }
+            div {
+                background-color: white;
+                width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 20px;
+                border: 1px solid black;
+            }
+            input {
+                margin-bottom: 10px;
+                margin-top: 10px;
+            }
+            button {
+                margin-bottom: 10px;
+            }
+            p {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p>Bài 1: Đổi độ C sang F</p>
+            <label for="degree">Nhập độ C</label><br>
+            <input type="text" id="degree"><br>
+            <button onclick="convertToF()">Check</button><br>
+            <span>Kết quả: </span><span id="result1"></span>
+            <hr>
+
+            <p>Bài 2: Đổi mét sang feet</p>
+            <label for="meter">Nhập độ dài bằng mét</label><br>
+            <input type="text" id="meter"><br>
+            <button onclick="convertToFeet()">Check</button><br>
+            <span>Kết quả: </span><span id="result2"></span>
+            <hr>
+
+            <p>Bài 3: Diện tích hình vuông</p>
+            <label for="square">Nhập cạnh a</label><br>
+            <input type="text" id="square"><br>
+            <button onclick="calculateSquare()">Check</button><br>
+            <span>Kết quả: </span><span id="result3"></span>
+            <hr>
+
+            <p>Bài 4: Diện tích hình chữ nhật</p>
+            <label for="recsideA">Nhập cạnh a</label><br>
+            <input type="text" id="recsideA"><br>
+            <label for="recsideB">Nhập cạnh b</label><br>
+            <input type="text" id="recsideB"><br>
+            <button onclick="calculateRectangle()">Check</button><br>
+            <span>Kết quả: </span><span id="result4"></span>
+            <hr>
+
+            <p>Bài 5: Diện tích tam giác vuông</p>
+            <label for="trisideA">Nhập cạnh a</label><br>
+            <input type="text" id="trisideA"><br>
+            <label for="trisideB">Nhập cạnh b</label><br>
+            <input type="text" id="trisideB"><br>
+            <button onclick="calculateTriangle()">Check</button><br>
+            <span>Kết quả: </span><span id="result5"></span>
+            <hr>
+
+            <p>Bài 6: Phương trình bậc 1 (ax + b = c)</p>
+            <label for="numa6">Nhập số a</label><br>
+            <input type="text" id="numa6"><br>
+            <label for="numb6">Nhập số b</label><br>
+            <input type="text" id="numb6"><br>
+            <label for="numc6">Nhập số c</label><br>
+            <input type="text" id="numc6"><br>
+            <button onclick="solveX()">Check</button><br>
+            <span>Kết quả: </span><span id="result6"></span>
+            <hr>
+
+            <p>Bài 7: Phương trình bậc 2 (ax^2 + bx + c = 0)</p>
+            <label for="numa7">Nhập số a</label><br>
+            <input type="text" id="numa7"><br>
+            <label for="numb7">Nhập số b</label><br>
+            <input type="text" id="numb7"><br>
+            <label for="numc7">Nhập số c</label><br>
+            <input type="text" id="numc7"><br>
+            <button onclick="solveX2()">Check</button><br>
+            <span>Kết quả: </span><span id="result7"></span>
+            <hr>
+
+            <p>Bài 8: Kiểm tra tuổi</p>
+            <label for="age">Nhập tuổi</label><br>
+            <input type="text" id="age"><br>
+            <button onclick="checkAge()">Check</button><br>
+            <span>Kết quả: </span><span id="result8"></span>
+            <hr>
+            
+            <p>Bài 9: Kiểm tra cạnh tam giác</p>
+            <label for="sideA9">Nhập cạnh a</label><br>
+            <input type="text" id="sideA9"><br>
+            <label for="sideB9">Nhập cạnh b</label><br>
+            <input type="text" id="sideB9"><br>
+            <label for="sideC9">Nhập cạnh c</label><br>
+            <input type="text" id="sideC9"><br>
+            <button onclick="checkTriangle()">Check</button><br>
+            <span>Kết quả: </span><span id="result9"></span>
+            <hr>
+
+            <p>Bài 10: Tính giá điện</p>
+            <label for="electric">Nhập số điện tiêu thụ (kWh)</label><br>
+            <input type="text" id="electric"><br>
+            <button onclick="calculateElectric()">Check</button><br>
+            <span>Kết quả: </span><span id="result10"></span>
+            <hr>
+
+            <p>Bài 11: Tính thuế thu nhập cá nhân</p>
+            <label for="income">Nhập thu nhập (triệu đồng/năm)</label><br>
+            <input type="text" id="income"><br>
+            <button onclick="calculateTax()">Check</button><br>
+            <span>Kết quả: </span><span id="result11"></span>
+            <hr>
+
+            <p>Bài 12: Tính lãi ngân hàng</p>
+            <label for="balance">Nhập số tiền ban đầu</label><br>
+            <input type="text" id="balance"><br>
+            <label for="month">Nhập số tháng</label><br>
+            <input type="text" id="month"><br>
+            <label for="interest">Nhập lãi suất</label><br>
+            <input type="text" id="interest"><br>
+            <button onclick="calculateProfit()">Check</button><br>
+            <span>Kết quả: </span><span id="result12"></span>
+            <hr>
+        </div>
+    <script src="luyentap2.js"></script>
+    </body>
+</html>
