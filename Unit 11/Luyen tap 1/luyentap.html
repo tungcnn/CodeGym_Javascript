@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Luyện tập vòng lặp 01</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+        div {
+            padding: 20px;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid black;
+            background-color: white;
+        }
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Bài 1: Đếm 1-100</p>
+        <button onclick="countTo100()">Check</button><br>
+        <p id="result"></p>
+        <hr>
+
+        <p>Bài 2: Nhiệt độ</p>
+        <label for="temp">Nhập vào nhiệt độ</label><br>
+        <input type="text" id="temp"><br>
+        <button onclick="Temp()">Check</button><br>
+        <p id="result2"></p>
+        <hr>
+
+        <p>Bài 3: Hiển thị 20 số đầu trong dãy Fibonacci</p>
+        <button onclick="showFibonacci()">Check</button><br>
+        <p id="result3"></p>
+        <hr>
+
+        <p>Bài 4: Số đầu tiên trong dãy Fibonacci chia hết cho 5</p>
+        <button onclick="mod5Fibonacci()">Check</button><br>
+        <p id="result4"></p>
+        <hr>
+
+        <p>Bài 5: Tổng 20 số đầu trong dãy Fibonacci</p>
+        <button onclick="sumFibonacci()">Check</button><br>
+        <p id="result5"></p>
+        <hr>
+
+        <p>Bài 6: Tổng 30 số đầu chia hết cho 7 trong các số tự nhiên</p>
+        <button onclick="sumMod7()">Check</button><br>
+        <p id="result6"></p>
+        <hr>
+
+        <p>Bài 7: Fizz Buzz</p>
+        <button onclick="fizzBuzz()">Check</button><br>
+        <p id="result7"></p>
+        <hr>
+
+        <p>Bài 8: Đánh đề</p>
+        <button onclick="guessGame()">Chơi</button><br>
+        <p id="result8"></p>
+        <hr>
+    </div>
+
+    <script>
+        function countTo100() {
+            let count = 1;
+            while (count != 99) {
+                count++;
+            }
+            document.getElementById("result").innerHTML = "Đã đếm đến " + count;
+        }
+        function Temp() {
+            let value = document.getElementById("temp").value;
+            let message;
+            if (value >= 100) {
+                message = "Giam nhiet di ban";
+            } else if (value <= 20) {
+                message = "Tang nhiet len ong ei";
+            } else {
+                message = "Oke ban";
+            }
+            document.getElementById("result2").innerHTML = message;
+        }
+        function showFibonacci() {
+            let numbers = 20;
+            let count = 0;
+            let fib1 = 0;
+            let fib2 = 1;
+            let fib = 0;
+            let result = "";
+
+            while (count != numbers) {
+                fib = fib1 + fib2;
+                result += fib + ", "
+                fib1 = fib2;
+                fib2 = fib;
+                count++;
+            }
+
+            document.getElementById("result3").innerHTML = "Dãy Fibonacci là: " + result;
+        }
+        function mod5Fibonacci() {
+            let fib1 = 0;
+            let fib2 = 1;
+            let fib = 0;
+            let mod5 = false;
+
+            while (!mod5) {
+                fib = fib1 + fib2;
+                fib1 = fib2;
+                fib2 = fib;
+                if (fib % 5 === 0) {
+                    mod5 = true;
+                    document.getElementById("result4").innerHTML = "Số đầu tiên trong dãy Fibonacci chia hết cho 5 là " + fib;
+                }
+            }
+        }
+        function sumFibonacci() {
+            let numbers = 20;
+            let count = 0;
+            let fib1 = 0;
+            let fib2 = 1;
+            let fib = 0;
+            let total = 0;
+
+            while (count != numbers) {
+                fib = fib1 + fib2;
+                total += fib
+                fib1 = fib2;
+                fib2 = fib;
+                count++;
+            }
+
+            document.getElementById("result5").innerHTML = "Tổng dãy Fibonacci là: " + total;
+        }
+        function sumMod7() {
+            let numbers = 30;
+            let count = 0;
+            let N = 0;
+            let total = 0;
+
+            while (count != numbers) {
+                if (N % 7 === 0) {
+                    total += N;
+                    count++
+                }
+                N++
+            }
+            document.getElementById("result6").innerHTML = "Tổng là " + total;
+        }
+        function fizzBuzz() {
+            let result = "";
+            for (var i = 1; i <= 100; i++) {
+                if (i%3===0 && i%5===0) {
+                    result += "FizzBuzz, "
+                } else if (i%3===0) {
+                    result += "Fizz, "
+                } else if (i%5===0) {
+                    result += "Buzz, "
+                } else {
+                    result += i + ", "
+                }
+            }
+            document.getElementById("result7").innerHTML = result;
+        }
+        function guessGame() {
+            let from = parseInt(prompt("Bạn muốn đoán từ số mấy"));
+            let to = parseInt(prompt("Bạn muốn đoán đến số mấy"));
+            let target = Math.floor(Math.random()*(to-from+1))+from;
+            let guess;
+            let guessCounter = 0;
+            let win = false;
+
+            while(guessCounter < 3 && !win) {
+                guess = prompt('Đề về bao nhiêu?');
+                if (guess == target) {
+                    result = "Giàu r bạn"
+                    win = true;
+                } else {
+                    result = "Ra đê rồi"
+                    guessCounter++
+                }
+                alert(result)
+            }
+        }
+    </script>
+</body>
+
+</html>
