@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            let diemChuyenCan = parseFloat(prompt("Nhap diem chuyen can"));
+            let diemGiuaKy = parseFloat(prompt("Nhap diem giua ky"));
+            let diemCuoiKy = parseFloat(prompt("Nhap diem cuoi ky"));
+            let average = (diemChuyenCan + diemGiuaKy + diemCuoiKy)/3;
+            let result;
+
+            if (average >= 9) {
+                result = "A";
+            } else {
+                if (average >= 7) {
+                    result = "B";
+                } else {
+                    if (average >= 5) {
+                        result = "C"
+                    } else {
+                        result = "D"
+                    }
+                }
+            }
+            alert("Hoc sinh nay xep hang " + result);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Try pressing a key</p>
+        <p id="message"></p>
+        <script>
+            function checkKey(evt) {
+                let message;
+                if (evt.keyCode >= 48 && evt.keyCode <= 57) {
+                    message = evt.key;
+                } else {
+                    message = "Day ko phai so 0->9";
+                }
+                document.getElementById("message").innerHTML = message;
+            }
+            document.addEventListener("keypress", checkKey);
+        </script>
+    </body>
+</html>
