@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="result">Các số nguyên tố: </p>
+        <script>
+            let numbers = prompt("Bạn muốn in ra bao nhiêu số nguyên30");
+            let count = 0;
+            let N = 2;
+
+            while (count < numbers) {
+                if(!checkPrime(N)) {
+                    count++;
+                    document.getElementById("result").innerHTML += N + ", ";
+                }
+                N++;
+            }
+
+            function checkPrime(number) {
+                let bool = false;
+                for (var i = 2; i < number; i++) {
+                    if (number % i === 0) 
+                        bool = true;
+                }
+                return bool;
+            }
+        </script>
+    </body>
+</html>
