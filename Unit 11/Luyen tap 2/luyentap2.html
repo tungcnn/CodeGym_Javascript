@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Luyen tap 2</title>
+</head>
+
+<body>
+    <p>Bài 1: Hiển thị dãy Fibonacci</p>
+    <button onclick="showFibonacci()">Check</button><br>
+    <p id="result1"></p>
+    <hr>
+
+    <p>Bài 2: Tính giai thừa n!</p>
+    <label for="number">Nhập số n</label><br>
+    <input type="text" id="number"><br>
+    <button onclick="Factorial()">Check</button><br>
+    <p id="result2"></p>
+    <hr>
+
+    <p>Bài 3: In tam giác vuông</p>
+    <button onclick="printTriangle()">Print</button><br>
+    <div style="width: 40px;">
+        <p id="result3"></p>
+        <p id="result3b"></p>
+        <p id="result3c" style="text-align: right;"></p>
+        <p id="result3d" style="text-align: right;"></p>
+    </div>
+    <hr>
+
+    <p>Bài 4: In hình chữ nhật</p>
+    <button onclick="printRec()">Print</button><br>
+    <p id="result4"></p>
+    <hr>
+
+    <p>Bài 5: Tính lãi ngân hàng</p>
+    <label for="balance">Nhập số tiền ban đầu</label><br>
+    <input type="text" id="balance"><br>
+    <label for="month">Nhập số tháng</label><br>
+    <input type="text" id="month"><br>
+    <label for="interest">Nhập lãi suất</label><br>
+    <input type="text" id="interest"><br>
+    <button onclick="calculateProfit()">Check</button><br>
+    <span>Kết quả: </span><span id="result5"></span>
+    <hr>
+
+    <p>Bài 6: Vẽ hình trái tim</p>
+    <button onclick="printHeart()">Print</button><br>
+    <div style="width: 240px; text-align: center;">
+        <div style="float: left; width: 50%;">
+            <span id="result6a" ></span>
+        </div>
+        <div style="float: left; width: 50%;">
+            <span id="result6b"></span>
+        </div>
+    </div>
+    <br>
+    <div style="width: 240px; text-align: center;">
+        <p id="result6c"></p>
+    </div>
+    <hr>
+
+    <script>
+        function showFibonacci() {
+            let numbers = parseInt(prompt("Bạn muốn in bao nhiêu số fibonacci"))
+            let count = 0;
+            let fib1 = 0;
+            let fib2 = 1;
+            let fib = 0;
+            let result = "";
+
+            while (count != numbers) {
+                fib = fib1 + fib2;
+                result += fib + ", "
+                fib1 = fib2;
+                fib2 = fib;
+                count++;
+            }
+
+            document.getElementById("result1").innerHTML = "Dãy Fibonacci là: " + result;
+        }
+        function Factorial() {
+            let number = document.getElementById("number").value;
+            let total = 1;
+            if (number < 0) {
+                document.getElementById("result2").innerHTML = "Ko thể tính giai thừa âm"
+            } else if (number == 0) {
+                document.getElementById("result2").innerHTML = "0";
+            } else if (number == 1) {
+                document.getElementById("result2").innerHTML = "1";
+            } else {
+                for (var i = 1; i <= number; i++) {
+                    total *= i;
+                }
+            }
+            document.getElementById("result2").innerHTML = total
+        }
+        function printTriangle() {
+            for (let i = 1; i <= 5; i++) {
+                for (var j = 1; j <= i; j++) {
+                    document.getElementById("result3").innerHTML += "*";
+                }
+                document.getElementById("result3").innerHTML += "<br>";
+            }
+            for (let i = 5; i >= 1; i--) {
+                for (var j = 1; j <= i; j++) {
+                    document.getElementById("result3b").innerHTML += "*";
+                }
+                document.getElementById("result3b").innerHTML += "<br>";
+            }
+            for (let i = 1; i <= 5; i++) {
+                for (var j = 1; j <= i; j++) {
+                    document.getElementById("result3c").innerHTML += "*";
+                }
+                document.getElementById("result3c").innerHTML += "<br>";
+            }
+            for (let i = 5; i >= 1; i--) {
+                for (var j = 1; j <= i; j++) {
+                    document.getElementById("result3d").innerHTML += "*";
+                }
+                document.getElementById("result3d").innerHTML += "<br>";
+            }
+        }
+        function printRec() {
+            for (let i = 1; i <= 20; i++) {
+                document.getElementById("result4").innerHTML += "*"
+            }
+            document.getElementById("result4").innerHTML += "<br>"
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById("result4").innerHTML += "*"
+                for (let j = 1; j <= 36; j++) {
+                    document.getElementById("result4").innerHTML += "&nbsp"
+                }
+                document.getElementById("result4").innerHTML += "*<br>"
+            }
+            for (let i = 1; i <= 20; i++) {
+                document.getElementById("result4").innerHTML += "*"
+            }
+        }
+        function calculateProfit() {
+            let balance = Number(document.getElementById("balance").value);
+            let month = Number(document.getElementById("month").value);
+            let interest = Number(document.getElementById("interest").value);
+            console.log(balance);
+            console.log(month);
+            console.log(interest);
+            
+            if (isNaN(balance) || isNaN(month) || isNaN(interest) || balance <= 0 || month <= 1 || interest <= 0) {
+                alert("Bạn chưa nhập đúng số")
+            } else {
+                for (let i = 1; i <= month; i ++) {
+                    balance *= (1 + interest);
+                }
+                balance = balance.toFixed(2);
+                document.getElementById("result5").innerHTML = "Sau " + month + " tháng bạn sẽ có " + balance + " VND"
+            }
+        }
+        function printHeart() {
+            for (let i = 4; i <= 10; i+= 2) {
+                for (let j = 1; j <= i; j ++) {
+                    document.getElementById("result6a").innerHTML += "*&nbsp"
+                }
+                document.getElementById("result6a").innerHTML += "<br>"
+            }
+            for (let i = 4; i <= 10; i+=2) {
+                for (let j = 1; j <= i; j ++) {
+                    document.getElementById("result6b").innerHTML += "*&nbsp"
+                }
+                document.getElementById("result6b").innerHTML += "<br>"
+            }
+            for (let i = 20; i >= 2; i-=2 ) {
+                for (let j = 1; j <= i; j ++) {
+                    document.getElementById("result6c").innerHTML += "*&nbsp"
+                }
+                document.getElementById("result6c").innerHTML += "<br>"
+            }
+        }
+    </script>
+</body>
+
+</html>
