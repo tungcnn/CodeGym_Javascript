@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p>Bài 1: Nối các phần tử trong 1 array ["Red", "Green", "White", "Black"]</p>
+    <button onclick="Join()">Join</button>
+    <p id="result"></p>
+
+    <p>Bài 2: Chèn dấu (-) vào giữa 2 số chắn</p>
+    <button onclick="Ex02()">Chèn</button>
+    <p id="result2"></p>
+
+    <p>Bài 3: Viết hoa</p>
+    <button onclick="Ex03()">Chuyển</button>
+    <p id="result3"></p>
+
+    <script>
+        function Join() {
+            let colors = ["Red", "Green", "White", "Black"];
+            let joined_string = "";
+
+            for (let i = 0; i < colors.length; i++) {
+                joined_string += colors[i] + ", ";
+            }
+            document.getElementById("result").innerHTML = joined_string;
+        }
+        function Ex02() {
+            let numbers = [];
+            numbers = prompt("Nhập dãy số của bạn");
+            let newArray = [numbers[0]];
+
+            for (let i = 1; i < numbers.length; i++) {
+                if (numbers[i-1] % 2 === 0 && numbers[i] % 2 === 0) {
+                    newArray.push("-", numbers[i])
+                } else {
+                    newArray.push(numbers[i])
+                }
+            }
+            newArray = newArray.join('');
+            document.getElementById("result2").innerHTML = newArray;
+        }
+        function Ex03() {
+            let words = [];
+            words = prompt("Nhập dãy chữ của bạn");
+            let newArray = [];
+
+            for (let i = 0; i < words.length; i++) {
+                if (words[i] == words[i].toUpperCase()) {
+                    newArray.push(words[i].toLowerCase());
+                } else {
+                    newArray.push(words[i].toUpperCase());
+                }
+            }
+            newArray = newArray.join('')
+            document.getElementById("result3").innerHTML = "Old string: " + words + "<br>New string: " + newArray;
+        }
+    </script>
+</body>
+
+</html>
