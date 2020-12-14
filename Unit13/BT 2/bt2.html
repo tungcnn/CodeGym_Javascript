@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <label for="search">Nhập màu cần tìm</label>
+        <input type="text" id="search">
+        <button onclick="search()">Search</button>
+        <p id="result"></p>
+        <script>
+
+            let english = ["red", "blue", "orange", "yellow", "black", "white", "green", "purple", "brown"]
+            let vietnamese = ["Đỏ", "Xanh dương", "Cam", "Vàng", "Đen", "Trắng", "Xanh Lá Cây", "Tím", "Nâu"]
+            
+            function search() {
+                let value = document.getElementById("search").value
+                let found = false;
+                for (let i = 0; i < english.length; i ++) {
+                    if (value === english[i]) {
+                        document.getElementById("result").innerHTML = vietnamese[i];
+                        found = true;
+                    }
+                }
+                if (found == false) {
+                    document.getElementById("result").innerHTML = "Couldnt find your word"
+                }
+            }
+        </script>
+    </body>
+</html>
