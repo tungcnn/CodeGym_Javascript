@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Cờ caro</h1>
+    <p id="board"></p>
+    <button onclick="Move('x')">Move X</button>
+    <button onclick="Move('o')">Move O</button>
+    <script>
+        let board = [];
+        let data = "";
+        for (let i = 0; i < 9; i++) {
+            board[i] = Array(i, "_", "_", "_", "_", "_", "_", "_", "_", "_")
+        }
+        for (let i = 0; i < 9; i++) {
+            board[0][i] = i
+        }
+        function printBoard() {
+            for (let i = 0; i < 9; i++) {
+                data += "<br>"
+                for (let j = 0; j < 9; j++) {
+                    data += board[i][j] + "&nbsp;&nbsp;";
+                }
+            }
+            document.getElementById("board").innerHTML = data;
+            data = ""
+        }
+        printBoard()
+        function Move(icon) {
+            let x = prompt("Nhập tọa độ x(Chieu doc)");
+            let y = prompt("Nhập tọa độ y(Chieu ngang)");
+
+            data = "";
+            board[x][y] = icon;
+            printBoard();
+            checkWin("x");
+            checkWin("o");
+        }
+        function checkWin(icon) {
+            let win = false;
+
+            for (let i = 1; i < 9; i++) {
+                for (let j = 1; j < 9; j++) {
+                    if (board[i][j] == icon) {
+                        if (board[i + 1][j] == icon && board[i + 2][j] == icon && board[i + 3][j] == icon) {
+                            win = true;
+                            break;
+                        } else if (board[i][j + 1] == icon && board[i][j + 2] == icon && board[i][j + 3] == icon) {
+                            win = true;
+                            break;
+                        } else if (board[i - 1][j + 1] == icon && board[i - 2][j + 2] == icon && board[i - 3][j + 3] == icon) {
+                            win = true;
+                            break;
+                        } else if (board[i + 1][j + 1] == icon && board[i + 2][j + 2] == icon && board[i + 3][j + 3] == icon) {
+                            win = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (win) {
+                setTimeout(function () { alert(icon + ' won') }, 300)
+            }
+        }
+    </script>
+</body>
+
+</html>
