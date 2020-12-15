@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<body style="background-color: lightblue;">
+    <div style="background-color: white;width: 600px; border: 1px solid black; margin-left: auto; margin-right: auto; padding: 20px;">
+        <p>Bài 1: Phần tử lớn hơn 10 trong [1, 12, 3, 45, 43, 9, 10, 31, 7, 67]</p>
+        <button onclick="Ex01()">Check</button>
+        <p id="result1"></p>
+        <hr>
+
+        <p>Bài 2: Tìm GTLN và index của nó trong [1, 12, 3, 45, 43, 9, 10, 31, 7, 67]</p>
+        <button onclick="Ex02()">Check</button>
+        <p id="result2"></p>
+        <hr>
+
+        <p>Bài 3: Tìm GTLN và trung bình trong [1, 12, 3, 45, 43, 9, 10, 31, 7, 67]</p>
+        <button onclick="Ex03()">Check</button>
+        <p id="result3"></p>
+        <hr>
+
+        <p>Bài 4: Đảo ngược dãy sau [-3, 5, 1, 3, 2, 10, 6, -9, 7, 19]</p>
+        <button onclick="Ex04()">Check</button>
+        <p id="result4"></p>
+        <hr>
+
+        <p>Bài 5: Đếm số nguyên âm trong [-3, 5, -1, -3, 2, -10, 6, -9, 7, 19]</p>
+        <button onclick="Ex05()">Check</button>
+        <p id="result5"></p>
+        <hr>
+
+        <p>Bài 6: Tìm phần tử V</p>
+        <button onclick="Ex06()">Check</button>
+        <p id="result6"></p>
+        <hr>
+
+        <p>Bài 7: Xóa phần tử V trong [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</p>
+        <button onclick="Ex07()">Check</button>
+        <p id="result7"></p>
+        <hr>
+
+        <p>Bài 8: Sắp xếp theo thứ tự giảm dần: [23, 6, 76, 7, 9, 0, 34, 42, 3, 1, 15, 67]</p>
+        <button onclick="Ex08()">Check</button>
+        <p id="result8"></p>
+        <hr>
+
+        <p>Bài 9: Cộng 2 mảng</p>
+        <button onclick="Ex09()">Check</button>
+        <p id="result9"></p>
+    </div>
+
+    <script>
+        function Ex01() {
+            let numbers = [1, 12, 3, 45, 43, 9, 10, 31, 7, 67]
+            let count = 0;
+            let newNumbers = "";
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i] >= 10) {
+                    count++;
+                    newNumbers += i + ", "
+                }
+            }
+            document.getElementById("result1").innerHTML = "Có " + count + " số lớn hơn 10: " + newNumbers
+        }
+        function Ex02() {
+            let numbers = [1, 12, 3, 45, 43, 9, 10, 31, 7, 67]
+            let max = numbers[0];
+            let max_index = 0;
+            for (let i = 1; i < numbers.length; i++) {
+                if (max < numbers[i]) {
+                    max = numbers[i]
+                    max_index = i
+                }
+            }
+            document.getElementById("result2").innerHTML = "GTLN là  " + max + " ở index = " + max_index
+        }
+        function Ex03() {
+            let numbers = [1, 12, 3, 45, 43, 9, 10, 31, 7, 67]
+            let max = numbers[0];
+            let sum = 0;
+            for (let i = 1; i < numbers.length; i++) {
+                sum += numbers[i]
+                if (max < numbers[i]) {
+                    max = numbers[i]
+                }
+            }
+            console.log(sum)
+            let average = sum / numbers.length
+            document.getElementById("result3").innerHTML = "GTLN là  " + max + " và trung bình là " + average
+        }
+        function Ex04() {
+            let array = [-3, 5, 1, 3, 2, 10, 6, -9, 7, 19];
+            let first = 0;
+            let last = array.length - 1;
+            while (first < last) {
+                let b = array[first];
+                array[first] = array[last];
+                array[last] = b;
+                first++;
+                last--;
+            }
+            document.getElementById("result4").innerHTML = array
+        }
+        function Ex05() {
+            let array = [-3, 5, -1, -3, 2, -10, 6, -9, 7, 19];
+            let count = 0;
+            let newArray = "";
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] < 0) {
+                    count++;
+                    newArray += array[i] + ", "
+                }
+            }
+            document.getElementById("result5").innerHTML = "Dãy có " + count + " số nguyên âm là: " + newArray
+        }
+        function Ex06() {
+            let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            let V = prompt("Bạn muốn tìm số nào?");
+            let found = false;
+
+            for (let i = 0; i < numbers.length; i++) {
+                if (V == numbers[i]) {
+                    found = true;
+                }
+            }
+            if (found) {
+                document.getElementById("result6").innerHTML = "V is in the array"
+            } else {
+                document.getElementById("result6").innerHTML = "V is not the array"
+            }
+        }
+        function Ex07() {
+            let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            let V = prompt("Bạn muốn tìm số nào?");
+            let found = false;
+
+            for (let i = 0; i < numbers.length; i++) {
+                if (V == numbers[i]) {
+                    numbers.splice(i, 1);
+                    found = true;
+                }
+            }
+            if (found) {
+                document.getElementById("result7").innerHTML = "Đã xóa V khỏi array. Còn lại: " + numbers
+            } else {
+                document.getElementById("result7").innerHTML = "V is not the array"
+            }
+        }
+        function Ex08() {
+            let numbers = [23, 6, 76, 7, 9, 0, 34, 42, 3, 1, 15, 67]
+            numbers.sort(function (a, b) { return b - a });
+            document.getElementById("result8").innerHTML = numbers
+        }
+        function Ex09() {
+            let a = [2, 13, 454, 54, 236, 7, 87, 99, 4543, 4]
+            let b = [7, 9, 4, 34, 65, 7, 876, 3, 43, 24]
+            let c = a.concat(b)
+            document.getElementById("result9").innerHTML = c;
+        }
+    </script>
+</body>
+
+</html>
