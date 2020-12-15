@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Type anything slowly</h2>
+    <textarea id="text" cols="30" rows="10" onkeyup="typeTextarea()"></textarea>
+    <script>
+        let message = ["", "T", "ù", "n", "g", " ", "đ", "ẹ", "p", " ", "z", "a", "i", "!"]
+        let letter = "";
+        let count = 0;
+        function typeTextarea() {
+            count ++;
+            document.getElementById("text").value = "";
+            
+            for (let i = 1; i <= count; i ++) {
+                letter += message[i]
+                if (i == 13) {
+                    document.getElementById("text").value = ""
+                    count = 0;
+                }   
+            }
+            
+            document.getElementById("text").value = letter;
+            letter = ""
+        }
+        
+    </script>
+</body>
+
+</html>
