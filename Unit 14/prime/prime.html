@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <p id="result"></p>
+    <script>
+        function isPrime(num) {
+            let prime = true;
+            if (num < 2) {
+                prime = false
+            } else if (num==2){
+                prime = true
+            } else if (num % 2 == 0) {
+                prime = false
+            } else {
+                for (let i = 3; i < Math.sqrt(num); i +=2) {
+                    if (num % i == 0) {
+                        prime = false
+                        break
+                    }
+                }
+            }
+            return prime
+        }
+
+        for (let i = 0; i < 10000; i++) {
+            if(isPrime(i))
+                document.getElementById("result").innerHTML += i + ", "
+        }
+    </script>
+</html>
