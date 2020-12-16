@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<body style="background-color: lightblue;">
+    <div style="width: 200px; margin-left: auto; margin-right: auto; border: 1px solid black; background-color: white; padding: 20px;">
+        <p>Bài 1: Hiện Xin chào</p>
+        <button onclick="alertMessage()">Check</button>
+        <hr>
+
+        <p>Bài 2: Cộng thêm 1</p>
+        <button onclick="Ex02()">Check</button>
+        <p id="ans2"></p>
+        <hr>
+
+        <p>Bài 3: So sánh</p>
+        <button onclick="Ex03()">Check</button>
+        <hr>
+
+        <p>Bài 4: Nhìn giá trị của result</p>
+        <button onclick="Ex04()">Check</button>
+        <hr>
+
+        <p>Bài 5: Chòm sao</p>
+        <button onclick="Ex05()">Check</button>
+        <hr>
+    </div>
+    <script>
+        function alertMessage() {
+            alert("Xin chao")
+        }
+        function Ex02() {
+            let number = parseInt(prompt("Nhap so"))
+            document.getElementById("ans2").innerHTML = congMot(number)
+        }
+        function congMot(number) {
+            return number + 1
+        }
+        function Ex03() {
+            let a = parseInt(prompt("Nhap so"));
+            let b = parseInt(prompt("Nhap so"));
+            soSanh(a, b)
+        }
+        function soSanh(a, b) {
+            if (a > b) {
+                alert("a lon hon b")
+            } else {
+                let c = a + b
+                alert("Tong 2 so la " + c)
+            }
+        }
+        function Ex04() {
+            result = 0;
+            alert(result);
+            result = addNumbers();
+            alert(result);
+        }
+        function addNumbers() {
+            firstNum = 4;
+            secondNum = 8;
+            result = firstNum + secondNum;
+            return result;
+        }
+        
+        let stars = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+        let constelation = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"]
+        
+        function Ex05() {
+            let star = prompt("Nhap ten ngoi sao de tim");
+            findConstellation(star)
+        }
+        function findConstellation(star) {
+            let found = false;
+            for (let i in stars) {
+                if (stars[i] == star) {
+                    alert("Found the constellation " + constelation[i])
+                    found = true;
+                }
+            }
+            if (found == false) 
+                alert("Couldnt find any")
+        }
+    </script>
+</body>
+
+</html>
