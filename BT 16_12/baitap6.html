@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let arr = [];
+        let count = 0;
+
+        while (count < 5) {
+            let value = prompt("Nhập số:");
+            arr.push(value);
+            count++;
+        }
+
+        arr.sort(function(a,b) {
+            return a-b
+        })
+        alert(arr)
+    </script>
+</html>
