@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <button onclick="Check()">Check</button>
+</head>
+
+<body>
+    <script>
+        function Check() {
+            let str = prompt("Nhap vao 1 chuoi");
+            let palindrome = isPalindrome(str)
+            if (palindrome) {
+                alert("Is palindrome")
+            } else {
+                alert("Not palindrome")
+            }
+        }
+        function isPalindrome(s) {
+            if (s[0] == s[s.length - 1]) {
+                if (s.length <= 2) {
+                    return true;
+                } else {
+                    s = s.substring(1, s.length-1)
+                    console.log(s)
+                    return isPalindrome(s)
+                }
+            } else {
+                false
+            }
+        }
+    </script>
+</body>
+
+</html>
