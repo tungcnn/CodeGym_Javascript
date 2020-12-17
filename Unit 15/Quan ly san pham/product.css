@@ -1,0 +1,34 @@
+button {
+    border-radius: 4px;
+    background-color: green;
+    width: 50px;
+    height: 35px;
+    padding: 5px;
+    color: white;
+    border: 0;
+}
+#productdiv {
+    padding: 20px;
+    background-color: lightgray;
+    width: 400px;
+}
+input {
+    width: 300px;
+    height: 30px;
+}
+.name {
+    width: 250px;
+}
+.btntd {
+    width: 100px;
+}
+.total {
+    text-align: left;
+    color: red;
+}
+tbody:nth-child(2n) {
+    background: lightgray;
+}
+td {
+    padding: 10px;
+}
