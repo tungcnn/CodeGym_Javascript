@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<body style="background-color: lightblue;">
+    <div style="background-color: white; border: 1px solid black; width: 400px; margin-right: auto; margin-left: auto; padding: 20px">
+        <p>Bài 1: Tinh binh phuong</p>
+        <button onclick="Ex01()">Check</button>
+        <hr>
+
+        <p>Bài 2: Tính diện tích, chu vi hình tròn</p>
+        <button onclick="Ex02()">Check</button>
+        <hr>
+
+        <p>Bài 3: Tính giai thừa</p>
+        <button onclick="Ex03()">Check</button>
+        <hr>
+
+        <p>Bài 4: Kiem tra so</p>
+        <button onclick="Ex04()">Check</button>
+        <hr>
+
+        <p>Bài 5: Tim GTNN</p>
+        <button onclick="Ex05()">Check</button>
+        <hr>
+
+        <p>Bài 6: Check nguyen duong</p>
+        <button onclick="Ex06()">Check</button>
+        <hr>
+
+        <p>Bài 7: Đổi chỗ 2 số</p>
+        <button onclick="Ex07()">Check</button>
+        <hr>
+
+        <p>Bài 8: Đảo ngược mảng</p>
+        <button onclick="Ex08()">Check</button>
+        <hr>
+
+        <p>Bài 9: Check ky tu xuat hien may lan trong 'tienthongthaidepzai'</p>
+        <button onclick="Ex09()">Check</button>
+        <hr>
+    </div>
+    <script>
+        function Ex01() {
+            let number = prompt("Nhap so");
+            alert(square(number))
+        }
+        function square(number) {
+            return number ** 2
+        }
+        function Ex02() {
+            let radius = prompt("Nhap ban kinh");
+            let a = chuVi(radius);
+            let b = dienTich(radius);
+
+            alert("Chu vi la: " + a + " va dien tich la: " + b)
+        }
+        function chuVi(r) {
+            return r * 2 * 3.14
+        }
+        function dienTich(r) {
+            return r ** 2 * 3.14
+        }
+        function Ex03() {
+            let number = prompt("Nhap so");
+            factorial(number);
+        }
+        function factorial(number) {
+            let result = 1;
+            if (number < 1) {
+                alert("Ko the tinh giai thua so am")
+            } else if (number == 1) {
+                alert(1)
+            } else if (number > 1) {
+                for (let i = 1; i <= number; i++) {
+                    result *= i;
+                }
+                alert(result)
+            } else {
+                alert("Xin hay nhap 1 so")
+            }
+        }
+        function Ex04() {
+            let input = prompt("Nhap vao 1 ky tu");
+            checkNum(input);
+        }
+        function checkNum(input) {
+
+            if (isNaN(input)) {
+                alert("Not a number");
+            } else {
+                alert("Is a number");
+            }
+        }
+        function Ex05 () {
+            let a = prompt("Nhap so thu 1");
+            let b = prompt("Nhap so thu 2");
+            let c = prompt("Nhap so thu 3");
+
+            alert(findMin(a, b, c));
+        }
+        function findMin (a, b, c) {
+            let min;
+            if (a < b && a < c) {
+                min = a
+            } else {
+                if (b < c) {
+                    min = b
+                } else {
+                    min = c
+                }
+            }
+            return min
+        }
+        function Ex06 () {
+            let a = prompt("Nhap so");
+            let result = checkPositive(a)
+            if (result)    
+                alert("Nguyen Duong")
+            else 
+                alert("Am hoac bang 0")
+        }
+        function checkPositive(a) {
+            if (a > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function Ex07() {
+            let a = prompt("Nhap a");
+            let b = prompt("Nhap b");
+            swap(a, b)
+        } 
+        function swap(a, b) {
+            let temp = a;
+            a = b;
+            b = temp;
+            alert("a = " + a + " va b = " + b )
+        }
+        function Ex08() {
+            let a = prompt("Nhap so 1");
+            let b = prompt("Nhap so 2");
+            let c = prompt("Nhap so 3");
+            let d = prompt("Nhap so 4");
+            let e = prompt("Nhap so 5");
+
+            let numbers = [a, b, c, d, e]
+            alert(daoNguoc(numbers))
+        }
+        function daoNguoc(array) {
+            return array.reverse()
+        }
+        function Ex09() {
+            let c = prompt("Nhap 1 ky tu");
+            let arr = 'tienthongthaidepzai'
+            checkChar(arr, c) 
+        }
+        function checkChar(arr, c) {
+            let count = 0;
+            for (let i = 0; i < arr.length; i ++) {
+                if (c == arr[i]) {
+                    count++;
+                }
+            }
+            if (count < 1) {
+                alert(-1)
+            } else {
+                alert("Ky tu nay xuat hien " + count + " lan")
+            }
+        }
+    </script>
+</body>
+
+</html>
