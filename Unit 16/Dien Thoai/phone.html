@@ -21,6 +21,7 @@
                 alert("Phone already on")
             } else {
                 this.on = true;
+                alert("Phone is on")
             }
         }
         this.turnOff = function () {
@@ -28,6 +29,7 @@
                 alert("Phone already off")
             } else {
                 this.on = false;
+                alert("Bye bye");
             }
         }
         this.chargeBattery = function () {
@@ -99,6 +101,7 @@
     iphone.checkInbox();
     nokia.checkBattery();
     nokia.chargeBattery();
+    iphone.turnOff();
 </script>
 
 </html>
