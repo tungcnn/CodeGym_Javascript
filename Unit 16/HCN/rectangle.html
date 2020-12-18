@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <button onclick="Draw01()">Check hinh 1</button>
+    <button onclick="Draw02()">Check hinh 2</button>
+    <canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;">
+</body>
+<script>
+    let Rectangle = function (w, h) {
+        this.w = w;
+        this.h = h;
+        this.getWidth = function () {
+            return this.w;
+        }
+        this.getHeight = function () {
+            return this.h;
+        }
+        this.setWidth = function (w) {
+            this.w = w
+        }
+        this.setHeight = function (h) {
+            this.h = h
+        }
+        this.getArea = function () {
+            return this.w * this.h;
+        }
+        this.getPerimeter = function () {
+            return (this.w + this.h) * 2;
+        }
+        this.drawRect = function () {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.beginPath();
+            ctx.lineWidth = '6';
+            ctx.strokeStyle = 'lightblue'
+            ctx.rect(0, 0, this.w, this.h);
+            ctx.fillStyle = 'yellow';
+            ctx.fill();
+            ctx.stroke();
+        }
+    }
+    var myRect = new Rectangle(600, 300);
+    myRect.drawRect();
+    function Draw01() {    
+        alert("Dien tich la " + myRect.getArea());
+        alert("Chu vi la " + myRect.getPerimeter());
+    }
+    function Draw02() {
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        ctx.clearRect(0, 0, 1368, 768);
+        myRect.setHeight(700);
+        myRect.setWidth(400);
+        myRect.drawRect();
+        alert("Dien tich 2 la " + myRect.getArea());
+        alert("Chu vi 2 la " + myRect.getPerimeter());
+    }
+</script>
+
+</html>
