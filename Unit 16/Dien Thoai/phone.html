@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<script>
+    let Phone = function () {
+        this.battery = 100;
+        this.draft = '';
+        this.received = [];
+        this.sent = [];
+        this.on = false;
+
+        this.checkStatus = function () {
+            if (this.on == true) {
+                return true
+            } else {
+                alert("Phone is off")
+                return false;
+            }
+        }
+        this.turnOn = function () {
+            if (this.on == true) {
+                alert("Phone already on")
+            } else {
+                this.on = true;
+            }
+        }
+        this.turnOff = function () {
+            if (this.on == false) {
+                alert("Phone already off")
+            } else {
+                this.on = false;
+            }
+        }
+        this.chargeBattery = function () {
+            if (this.battery == 100) {
+                alert("Phone is fully charged")
+            } else {
+                this.battery += 1;
+                alert("Phone charged");
+                this.checkBattery();
+            }
+        }
+        this.createNewMessage = function () {
+            if (this.checkStatus()) {
+                this.draft = prompt("Type your message here");
+                alert("Draft saved");
+                this.battery--;
+            }
+        }
+        this.receiveMessage = function (message) {
+            if (this.checkStatus()) {
+                this.received.push(message);
+                this.battery--;
+            }
+        }
+        this.sendMessage = function (phone) {
+            if (this.checkStatus()) {
+                phone.receiveMessage(this.draft);
+                this.sent.push(this.draft)
+                alert("Message sent")
+                this.battery--;
+            }
+        }
+        this.checkInbox = function () {
+            if (this.checkStatus()) {
+                let inbox = ''
+                for (let i = 0; i < this.received.length; i++) {
+                    inbox += "\r\n"+ this.received[i]
+                }
+                alert("Inbox cua ban: " + inbox);
+                this.battery--;
+            }
+        }
+        this.checkSent = function () {
+            if (this.checkStatus()) {
+                let sent = ''
+                for (let i = 0; i < this.sent.length; i++) {
+                    sent += "\r\n" + this.sent[i]
+                }
+                alert("Tin nhan da gui: \r\n" + sent);
+                this.battery--;
+            }
+        }
+        this.checkBattery = function() {
+            alert("Current battery: " + this.battery);
+        }
+    }
+    let nokia = new Phone();
+    let iphone = new Phone();
+    nokia.createNewMessage();
+    nokia.turnOn();
+    iphone.turnOn();
+    nokia.createNewMessage();
+    nokia.sendMessage(iphone); 
+    nokia.createNewMessage();
+    nokia.sendMessage(iphone); 
+    nokia.createNewMessage();
+    nokia.sendMessage(iphone); 
+    nokia.checkSent();
+    iphone.checkInbox();
+    nokia.checkBattery();
+    nokia.chargeBattery();
+</script>
+
+</html>
