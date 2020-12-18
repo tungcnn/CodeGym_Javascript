@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            let Temp = function (temp) {
+                this.temp = temp;
+                this.setTemp = function (temp) {
+                    this.temp = temp
+                }
+                this.toF = function () {
+                    return (this.temp*1.8) + 32;
+                }
+                this.toK = function () {
+                    return this.temp + 273.15;
+                }
+            }
+            let myTemp = new Temp(20);
+            myTemp.setTemp(25);
+            alert(myTemp.toF() + " do F");
+            alert(myTemp.toK() + " do K");
+        </script>
+    </body>
+</html>
