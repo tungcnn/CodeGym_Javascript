@@ -5,8 +5,8 @@ const MONSTER_HEIGHT = 70;
 
 function Monster(num) {
     this.xPosition = Math.floor(Math.random() * 401);
-    this.yPosition = -100;
-    this.speed = 10;
+    this.yPosition = Math.floor(Math.random() * 100) - 100;
+    this.speed = 5;
     this.src = 'images/mon' + num + '.png';
     this.draw = function (ctx) {
         var monster = new Image();
@@ -27,7 +27,7 @@ function Car() {
     this.yPosition = 600;
     this.carWidth = 70;
     this.carHeight = 100
-    this.speed = 10;
+    this.speed = 20;
 
     this.draw = function (ctx) {
         var car = new Image();
@@ -60,27 +60,23 @@ function Game() {
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.monster1 = new Monster(1);
+    this.monsters = [];
+
+    for (let i = 1; i <= 3; i++) {
+        let monster = new Monster(i);
+        this.monsters[i - 1] = monster;
+    }
 
     this.start = function () {
-        this.car.draw(this.ctx);
-        this.monster1.draw(this.ctx, 1);
-        setInterval('myGame.moveMonster()', 100);
+        this.interval = setInterval(update, 20);
+    }
+    this.stop = function () {
+        clearInterval(this.interval);
     }
 
-    this.refreshCar = function () {
-        this.ctx.clearRect(this.car.xPosition - this.car.speed, this.car.yPosition - this.car.speed, CAR_WIDTH + this.car.speed * 2, CAR_HEIGHT + this.car.speed * 2);
-        this.car.draw(this.ctx)
+    this.clear = function () {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
-    this.refreshMonster = function () {
-        this.ctx.clearRect(this.monster1.xPosition - this.monster1.speed, this.monster1.yPosition - this.monster1.speed, MONSTER_WIDTH + this.monster1.speed * 2, MONSTER_HEIGHT + this.monster1.speed * 2);
-        this.monster1.draw(this.ctx, 1)
-        console.log(this.monster1.yPosition)
-    }
-    this.moveMonster = function () {
-        this.monster1.move()
-        this.refreshMonster();
-    }
-   
     this.moveCar = function (event) {
         switch (event.keyCode) {
             case 37:
@@ -96,13 +92,51 @@ function Game() {
                 this.car.move(40);
                 break;
         }
-        this.refreshCar();
+    }
+    this.checkCrash = function () {
+        var carLeft = this.car.xPosition;
+        var carRight = this.car.xPosition + this.car.width;
+        var carTop = this.car.yPosition;
+        var carBot = this.car.yPosition + this.car.height;
+        var crash = true;
+        
+        for (let i = 0; i < this.monsters.length; i++) {
+            var monLeft = monsters[i].xPosition;
+            var monRight = monsters[i].xPosition + monsters[i].width;
+            var monTop = monsters[i].yPosition;
+            var monBot = monsters[i].yPosition + monsters[i].height;
+            if (carLeft > monRight || carBot < monTop || carRight < monLeft || carTop > monBot) {
+                crash = false;
+            }
+        }
+
+        return crash;
     }
 }
 
 let myGame = new Game();
-myGame.start();
-let i = 0;
+
+function startGame() {
+    myGame.start();
+}
+function update() {
+    if (myGame.checkCrash()) {
+
+    } else {
+        myGame.clear();
+        myGame.car.draw(myGame.ctx);
+        for (let i = 0; i < myGame.monsters.length; i++) {
+            console.log(i)
+            if (myGame.monsters[i].yPosition <= myGame.canvas.height + 100) {
+                myGame.monsters[i].move();
+                myGame.monsters[i].draw(myGame.ctx)
+            } else {
+                myGame.monsters[i].yPosition = -100;
+                myGame.monsters[i].xPosition = Math.floor(Math.random() * 401);
+            }
+        }
+    }
+}
 
 
 
