@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let numbers = [4, "a", 1, 4, 1, "a", 1, 1, 2, 3, 20, 4,  7, 8, 9, 20, 20];
+        let count = 1;
+        let ele;
+        for (let i = 0; i < numbers.length; i ++) {  
+            ele = numbers[0]; 
+            for (let j = 1; j < numbers.length; j++) {
+                if (ele == numbers[j]) {
+                    numbers.splice(j, 1);
+                    j--;
+                    count++;
+                }
+            }
+            numbers.shift();
+            if (count > 1) {
+                document.write("Phan tu " + ele + " lap lai " + count + " lan <br>");
+            }
+            count = 1;
+            i--;
+        }
+    </script>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <script>
+        let arr = ["lul", 1, 3, 5, 7, 9];
+        let ele = prompt("Nhap phan tu muon tim");
+        function findElement(ele) {
+            let found = false;
+            for (var i = 0; i < arr.length; i ++) {
+                if (ele == arr[i]) {
+                    found = true;
+                    alert("Phan tu nay nam o vi tri thu " + (i+1))
+                }
+            }
+            if (found == false) {
+                alert("Ko co phan tu nay")
+            }
+        }
+        findElement(ele);
+    </script>
+</html>
