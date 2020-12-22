@@ -6,10 +6,26 @@
     <link rel="stylesheet" href="css/car.css">
 </head>
 
-<body onkeydown="myGame.moveCar(event)" onload="startGame()">
+<body onkeydown="myGame.moveCar(event)"  onload="startGame()">
     <div>
-        <canvas style="background: url('images/road.png');" id="canvas" width="500px" height="700px"
-            style="border: 1px solid black;"></canvas>
+        <div class="column" id="info">
+            <span style="font-size: 500%; color: white;"><span>Speed: </span> <span id="speed"> </span> <span>KM/H</span></span></span>
+          
+            <div id="maxspeed">
+                <div id="currentspeed" style="width: 60%;"></div>
+            </div>
+        </div>
+        <div class="column">
+            <canvas id="canvas" width="500px" height="700px"
+                style="border: 1px solid black;"></canvas>
+        </div>
+        <div class="column" id="scoreboard">
+            <span style="font-size: 500%; color: white;"><span> Score: </span> <span id="score"></span></span>
+            <p>Mũi tên hoặc wasd để lái</p>
+            <p>G để tăng tốc (max 350)</p>
+            <p>B để giảm tốc (min 110)</p>
+            <p>Ghi 200 điểm để thắng (điểm tăng theo tốc chạy)</p>
+        </div>
     </div>
     <script src="js/car.js"></script>
 </body>
