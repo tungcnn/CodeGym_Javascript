@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function Switch() {
+        this.status = false;
+
+        this.connectToLamp = function (lamp) {
+            this.lamp = lamp;
+        }
+        this.switchOff = function () {
+            if (this.status) {
+                this.lamp.turnOff();
+                this.status = false;
+            }
+            else
+                alert("switch already off");
+        }
+        this.switchOn = function () {
+            if (this.status)
+                alert("switch already on");
+            else {
+                this.lamp.turnOn();
+                this.status = true;
+            }
+        }
+    }
+    function Lamp() {
+        this.status = false;
+        this.turnOff = function () {
+            if (this.status) {
+                this.status = false;
+                console.log(this.status + " Light is off");
+            }
+            else
+                alert("Light already off")
+        }
+        this.turnOn = function () {
+            if (this.status)
+                alert("Light already on")
+            else {
+                this.status = true;
+                console.log(this.status + " Light is on");
+            }
+        }
+    }
+
+    let mySwitch = new Switch();
+    let myLamp = new Lamp();
+    mySwitch.connectToLamp(myLamp);
+    mySwitch.switchOff();
+    mySwitch.switchOn();
+    mySwitch.switchOff();
+    mySwitch.switchOn();
+    mySwitch.switchOff();
+    mySwitch.switchOn();
+    mySwitch.switchOff();
+    mySwitch.switchOn();
+    mySwitch.switchOff();
+    mySwitch.switchOn();
+    mySwitch.switchOff();
+</script>
+
+</html>
