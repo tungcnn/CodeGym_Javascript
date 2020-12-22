@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function Apple() {
+        this.weight = 10;
+        this.getWeight = function () {
+            return this.weight;
+        }
+        this.decrease = function () {
+            if (this.isEmpty())
+                console.log("Het tao r")
+            else 
+                this.weight--;
+        }
+        this.isEmpty = function () {
+            if (this.weight > 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    }
+    function Human(_name, _sex, _weight) {
+        this.name = _name;
+        this.sex = _sex;
+        this.weight = _weight;
+
+        this.isMale = function () {
+            if (sex == "male") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        this.setGender = function (_sex) {
+            this.sex = _sex;
+        }
+        this.checkApple = function (apple) {
+            if (apple.getWeight() > 0) {
+                return true;
+            } else {
+                console.log("An het tao roi dm")
+                return false;
+            }
+        }
+        this.say = function (_string) {
+            console.log(_string);
+        }
+        this.eat = function (apple) {
+            if (this.checkApple(apple)) {
+                apple.decrease();
+                this.weight++;
+                console.log("Tang can roi. " + this.name + " nang " + this.weight)
+            }
+        }
+        this.getName = function () {
+            return this.name;
+        }
+        this.setName = function (_name) {
+            this.name = _name;
+        }
+        this.getWeight = function () {
+            return this.weight;
+        }
+        this.setWeight = function (_weight) {
+            this.weight = _weight
+        }
+    }
+
+    let traiCam = new Apple();
+    let Adam = new Human("Adam", "male", 70);
+    let Eva = new Human("Eva", "female", 45);
+
+    Eva.say("Em muon an tao");
+    Adam.say("Chua bao ko dc an ma");
+    Eva.say("Em an trc cho ma xem");
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Eva.eat(traiCam);
+    Adam.eat(traiCam);
+    Eva.eat(traiCam);
+    console.log(Eva.getWeight());
+    console.log(Adam.getWeight());
+</script>
+
+</html>
