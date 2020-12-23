@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<script>
+    class Rat {
+        constructor(name, weight, speed, alive) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.alive = alive;
+        }
+        getName() {
+            return this.name;
+        }
+        setName(name) {
+            this.name = name;
+        }
+        getWeight() {
+            return this.weight;
+        }
+        setWeight(weight) {
+            this.weight = weight
+        }
+        getSpeed() {
+            return this.speed = speed;
+        }
+        setSpeed() {
+            this.speed = speed;
+        }
+        say() {
+            document.write(this.name + ' says chit chit <br>');
+        }
+    }
+    class Cat {
+        constructor(name, weight, speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+        }
+        getName() {
+            return this.name;
+        }
+        setName(name) {
+            this.name = name;
+        }
+        getWeight() {
+            return this.weight;
+        }
+        setWeight(weight) {
+            this.weight = weight
+        }
+        getSpeed() {
+            return this.speed = speed;
+        }
+        setSpeed() {
+            this.speed = speed;
+        }
+        say() {
+            document(this.name + ' says meo meo <br>');
+        }
+        catchMouse(mouse) {
+            if (this.speed > mouse.speed) {
+                this.mouseCaught = mouse;
+                document.write(this.name + " caught " + mouse.getName() + "<br>");
+            } else {
+                document.write(mouse.getName() + " is too quick <br>")
+            }
+        }
+        eatMouse() {
+            if (this.mouseCaught != null) {
+                if (this.mouseCaught.alive) {
+                    this.weight += this.mouseCaught.getWeight();
+                    document.write(this.name + " ate " + this.mouseCaught.getName() + " and gained weight. Weight: " + this.weight + "<br>");
+                    this.mouseCaught = null;
+                } else {
+                    document.write(this.mouseCaught.getName() + " is already dead. <br>")
+                }
+            } else {
+                document.write(this.name + " hasnt caught any mouse.<br>");
+            }
+        }
+    }
+    function createMultipleRat(number) {
+        var state;
+        for (let i = 0; i < number; i++) {
+            var a = Math.floor(Math.random() * 10) + 1;
+            if (a > 5)
+                state = true;
+            else
+                state = false;
+            var name = "Jerry " + i;
+            var weight = Math.floor(Math.random() * 10) + 1;
+            var speed = Math.floor(Math.random() * 10) + 1;
+            let mouse = new Rat(name, weight, speed, state);
+            mouses.push(mouse);
+        }
+    }
+    function catChaseMouse(cat, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            cat.catchMouse(arr[i]);
+            cat.eatMouse();
+        }
+    }
+
+    let Tom = new Cat("Tom", 50, 10);
+    let mouses = [];
+    createMultipleRat(10);
+    catChaseMouse(Tom, mouses);
+</script>
+
+</html>
