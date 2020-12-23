@@ -9,6 +9,7 @@
 <body>
     <canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;">
         <script>
+            let circles = [];
             function Circle(x, y, radius) {
                 this.x = x;
                 this.y = y;
@@ -33,6 +34,7 @@
                 var x = Math.random() * window.innerWidth;
                 var y = Math.random() * window.innerHeight;
                 var circle = new Circle(x, y, radius);
+                circles.push(circle);
                 ctx.beginPath();
                 ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
                 ctx.fillStyle = color;
@@ -45,8 +47,24 @@
                     createCircle();
                 }
             }
-
-            setInterval(createMultipleCircle, 500);
+            createMultipleCircle();
+            function Move() {
+                var ctx = document.getElementById("myCanvas").getContext("2d");
+                ctx.clearRect(0, 0, 1368, 768);
+                var newX = Math.floor(Math.random()*50) - 25;
+                var newY = Math.floor(Math.random()*50) - 25;
+                console.log(newX, newY)
+                for (let i = 0; i < circles.length; i++) {
+                    circles[i].x += newX;
+                    circles[i].y += newY;
+                    ctx.beginPath();
+                    ctx.arc(circles[i].x, circles[i].y, circles[i].radius, 0, 2 * Math.PI);
+                    var color = getRandomColor();
+                    ctx.fillStyle = color;
+                    ctx.fill();
+                }
+            }
+            setInterval(Move, 50);
         </script>
 </body>
 
