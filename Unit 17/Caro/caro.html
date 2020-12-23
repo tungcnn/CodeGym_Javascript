@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Game caro</title>
+    <style>
+        body,html {
+            height: 100%;
+            text-align: center;
+        }
+        #bg {
+            background-image: url("resources/bg.jpg");
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            zoom: 80%;
+        }
+
+        h1 {
+            border: 5px solid silver;
+            border-radius: 4px;
+            background-color: lightblue;
+        }
+
+        #board {
+            position: relative;
+            margin-top: 50px;
+            margin-right: auto;
+            margin-left: auto;
+            width: 700px;
+        }
+
+        .cell {
+            background-color: #caa472;
+            border: solid 1px black;
+            text-align: center;
+            font-size: 20pt;
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="bg">
+        <h1>Dio (X) vs Jojo (O)</h1>
+        <div id="board">
+        </div>
+    </div>
+    <script src="caro.js"></script>
+</body>
+
+</html>
