@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<script>
+    class Remote {
+        constructor(tv) {
+            this.channel = 0;
+            this.tv = tv;
+        }
+        changeChannel() {
+            this.channel = prompt("Dung remtote chuyen tv den kenh may? ");
+            let found = false;
+            for (let i = 0; i < this.tv.channels.length; i++) {
+                if (this.channel == this.tv.channels[i]) {
+                    this.tv.currentChannel = this.channel;
+                    alert("Da chuyen den kenh " + this.tv.currentChannel)
+                    found = true;
+                } 
+            }
+            if (found == false) 
+                alert("Ko co kenh nay")
+        }
+        changeVolume() {
+            this.tv.changeVolume();
+        }
+        turnTVon() {
+            this.tv.turnOn();
+        }
+        turnTVoff() {
+            this.tv.turnOff();
+        }
+    }
+    class TV {
+        constructor() {
+            this.channels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            this.currentChannel = 1;
+            this.volume = 0;
+            this.isOn = false;
+        }
+        changeChannel() {
+            let channel = prompt("Bam TV chuyen den kenh may? ");
+            let found = false;
+            for (let i = 0; i < this.channels.length; i++) {
+                if (channel == this.channels[i]) {
+                    this.currentChannel = channel;
+                    alert("Da chuyen den kenh " + this.currentChannel)
+                    found = true;
+                } 
+            }
+            if (found == false) 
+                alert("Ko co kenh nay")
+        }
+        changeVolume() {
+            this.volume += 1;
+            alert("Tang volume them 1. Volume: " + this.volume)
+        }
+        turnOn() {
+            this.isOn = true;
+            alert("TV is on");
+        }
+        turnOff() {
+            this.isOn = false;
+            alert("TV is off");
+        }
+    }
+
+    let LG = new TV();
+    let remote = new Remote(LG);
+    LG.turnOn();
+    LG.changeChannel();
+    remote.changeChannel();
+    remote.changeVolume();
+    remote.changeVolume();
+    remote.turnTVoff();
+</script>
+
+</html>
