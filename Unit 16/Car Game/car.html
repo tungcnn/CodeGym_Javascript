@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="css/car.css">
 </head>
 
-<body onkeydown="myGame.moveCar(event)"  onload="startGame()">
-    <div>
+<body onkeydown="myGame.moveCar(event)">
+    <div style="text-align: center;">
+        <button onclick="startGame()">Start</button><button onclick="instruction()">Xem Huong Dan</button><br>
         <div class="column" id="info">
             <img src="images/speed.png" ><br>
             <span style="font-size: 400%; color: white;">
@@ -21,11 +22,8 @@
                 style="border: 1px solid black;"></canvas>
         </div>
         <div class="column" id="scoreboard">
+            
             <span style="font-size: 500%; color: white;"><span> Score: </span> <span id="score"></span></span>
-            <p>Mũi tên hoặc wasd để lái</p>
-            <p>G để tăng tốc (max 350)</p>
-            <p>B để giảm tốc (min 110)</p>
-            <p>Ghi 200 điểm để thắng (điểm tăng theo tốc chạy)</p>
         </div>
     </div>
     <script src="js/car.js"></script>

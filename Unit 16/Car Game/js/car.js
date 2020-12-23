@@ -7,7 +7,7 @@ const COIN_HEIGHT = 50;
 const CANVAS_WIDTH = 500;
 const CANVAS_HEIGHT = 700;
 const BACKGROUND_SPEED = 50;
-let monsterSpeed = 5;
+let monsterSpeed = 3;
 
 function Background(x, y) {
     this.xPosition = x;
@@ -92,10 +92,11 @@ function Game() {
     this.car = new Car();
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
+    this.score = 0;
     this.monsters = [];
     this.crashSound = new Audio("sound/crash.mp3");
     this.runSound = new Audio("sound/medium.mp3");
-    this.score = new Audio("sound/score.wav");
+    this.earn = new Audio("sound/score.wav");
     this.victory = new Audio("sound/victory.mp3");
     this.music = new Audio("sound/tokyodrift.mp3");
     this.music2 = new Audio("sound/gas.mp3");
@@ -167,19 +168,17 @@ function Game() {
                 this.car.move(40);
                 break;
             case 71:
-                if (this.car.speed < 35 && monsterSpeed < 15) {
+                if (this.car.speed < 35) {
                     this.car.speed += 2;
                     this.runSound.volume += 0.025;
-                    monsterSpeed += 0.5;
                     this.newspeed += 4;
                     this.currentspeed.style.width = this.newspeed + "%";
                 }
                 break;
             case 66:
-                if (this.car.speed > 11 && monsterSpeed > 1) {
+                if (this.car.speed > 11) {
                     this.car.speed -= 2;
                     this.runSound.volume -= 0.025;
-                    monsterSpeed -= 0.5;
                     this.newspeed -= 4;
                     this.currentspeed.style.width = this.newspeed + "%";
                 }
@@ -219,87 +218,104 @@ function Game() {
 }
 
 let myGame = new Game();
-let score = 0;
 let background1 = new Background(0, 0);
 let background2 = new Background(0, 0 - CANVAS_HEIGHT);
 let soundtrack = Math.floor(Math.random() * 10) + 1;
 
 function startGame() {
     myGame.start();
-
-    setInterval(function () {
-        let coin = new Coin(myGame.canvas);
-        myGame.coins.push(coin);
-        if (myGame.coins.length > 1) {
-            myGame.coins.shift();
-        }
-    }, 5000);
-
-    setInterval(function () {
-        let monNum = Math.floor(Math.random() * 3) + 1;
-        let monNo;
-        for (let i = 0; i < monNum; i++) {
-            monNo = Math.floor(Math.random() * 9) + 1;
-            let monster = new Monster(monNo);
-            myGame.monsters.push(monster);
-        }
-    }, 600 * monsterSpeed);
+    randomSoundtrack();
+    setInterval(spawnCoin, 5000);
+    setInterval(createMultipleMonster, 3000);
 }
 function update() {
     myGame.clear();
-    if (soundtrack <= 5) {
-        myGame.music.play()
-    } else {
-        myGame.music2.play()
-    }
-    var crash;
-    for (let i = 0; i < myGame.monsters.length; i++) {
-        if (myGame.checkCrash(myGame.monsters[i]) == true) {
-            crash = true;
-        }
-    }
-    for (let i = 0; i < myGame.coins.length; i++) {
-        if (myGame.checkCoin(myGame.coins[i]) == true) {
-            myGame.score.play();
-            score += myGame.car.speed;
-            myGame.coins.splice(i, 1);
-        }
-    }
-    document.getElementById("score").innerHTML = score;
-    if (score > 200) {
+    var crash = checkCrash();
+    checkCoin();
+    if (myGame.score > 200) {
         myGame.win();
     } else {
         if (crash == true) {
             myGame.stop();
         } else {
             myGame.runSound.play();
-
             document.getElementById("speed").innerHTML = myGame.car.speed * 10;
-
-            if (background1.yPosition < CANVAS_HEIGHT && background2.yPosition < 0) {
-                background1.move();
-                background2.move();
-            } else {
-                background1.yPosition = 0;
-                background2.yPosition = 0 - CANVAS_HEIGHT;
-            }
-            background1.draw(myGame);
-            background2.draw(myGame);
-            for (let i = 0; i < myGame.coins.length; i++) {
-                myGame.coins[i].draw(myGame);
-            }
-            for (let i = 0; i < myGame.monsters.length; i++) {
-                if (myGame.monsters[i].yPosition <= myGame.canvas.height + 100) {
-                    myGame.monsters[i].move();
-                    myGame.monsters[i].draw(myGame)
-                } else {
-                    myGame.monsters.splice(i, 1)
-                }
-            }
+            rollBackground();
+            drawCoin();
+            drawMonster();            
             myGame.car.draw(myGame);
         }
     }
 }
-
-
-
+function createMultipleMonster() {
+    let monNum = Math.floor(Math.random() * 3) + 1;
+    let monNo;
+    for (let i = 0; i < monNum; i++) {
+        monNo = Math.floor(Math.random() * 9) + 1;
+        let monster = new Monster(monNo);
+        myGame.monsters.push(monster);
+    }
+    monsterSpeed += 0.15;
+}
+function spawnCoin() {
+    let coin = new Coin(myGame.canvas);
+    myGame.coins.push(coin);
+    if (myGame.coins.length > 3) {
+        myGame.coins.shift();
+    }
+}
+function randomSoundtrack() {
+    if (soundtrack <= 5) {
+        myGame.music.play()
+    } else {
+        myGame.music2.play()
+    }
+}
+function checkCrash() {
+    var crash = false;
+    for (let i = 0; i < myGame.monsters.length; i++) {
+        if (myGame.checkCrash(myGame.monsters[i]) == true) {
+            crash = true;
+        }
+    }
+    return crash;
+}
+function checkCoin() {
+    for (let i = 0; i < myGame.coins.length; i++) {
+        if (myGame.checkCoin(myGame.coins[i]) == true) {
+            myGame.earn.play();
+            myGame.score += myGame.car.speed;
+            myGame.coins.splice(i, 1);
+        }
+    }
+    document.getElementById("score").innerHTML = myGame.score;
+}
+function rollBackground() {
+    if (background1.yPosition < CANVAS_HEIGHT && background2.yPosition < 0) {
+        background1.move();
+        background2.move();
+    } else {
+        background1.yPosition = 0;
+        background2.yPosition = 0 - CANVAS_HEIGHT;
+    }
+    background1.draw(myGame);
+    background2.draw(myGame);
+}
+function drawCoin() {
+    for (let i = 0; i < myGame.coins.length; i++) {
+        myGame.coins[i].draw(myGame);
+    }
+}
+function drawMonster() {
+    for (let i = 0; i < myGame.monsters.length; i++) {
+        if (myGame.monsters[i].yPosition <= myGame.canvas.height + 100) {
+            myGame.monsters[i].move();
+            myGame.monsters[i].draw(myGame)
+        } else {
+            myGame.monsters.splice(i, 1)
+        }
+    }
+}
+function instruction () {
+    alert("Mũi tên hoặc wasd để lái \r\nG để tăng tốc \r\n B để giảm tốc \r\nGhi 200 điểm để thắng \r\n(điểm tăng theo tốc chạy)");
+}

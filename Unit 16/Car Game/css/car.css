@@ -13,7 +13,7 @@ div {
     padding-top: 300px;
 }
 #scoreboard {
-    padding-top: 200px;
+    padding-top: 600px;
 }
 #maxspeed {
     width: 250px;
@@ -32,4 +32,11 @@ div {
 p {
     color: white;
     font-size: 200%;
+}
+button {
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #00a196;
+    color: white;
 }
