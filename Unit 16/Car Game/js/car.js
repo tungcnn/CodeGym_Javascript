@@ -95,7 +95,7 @@ function Game() {
     this.monsters = [];
     this.crashSound = new Audio("sound/crash.mp3");
     this.runSound = new Audio("sound/medium.mp3");
-    this.score = new Audio("sound/score.mp3");
+    this.score = new Audio("sound/score.wav");
     this.victory = new Audio("sound/victory.mp3");
     this.music = new Audio("sound/tokyodrift.mp3");
     this.music2 = new Audio("sound/gas.mp3");
@@ -247,8 +247,6 @@ function startGame() {
 }
 function update() {
     myGame.clear();
- 
-    console.log(soundtrack)
     if (soundtrack <= 5) {
         myGame.music.play()
     } else {
