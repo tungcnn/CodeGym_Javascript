@@ -232,7 +232,7 @@ function update() {
     myGame.clear();
     var crash = checkCrash();
     checkCoin();
-    if (myGame.score > 200) {
+    if (myGame.score > 500) {
         myGame.win();
     } else {
         if (crash == true) {
@@ -255,7 +255,7 @@ function createMultipleMonster() {
         let monster = new Monster(monNo);
         myGame.monsters.push(monster);
     }
-    monsterSpeed += 0.15;
+    monsterSpeed += 0.3;
 }
 function spawnCoin() {
     let coin = new Coin(myGame.canvas);
@@ -317,5 +317,5 @@ function drawMonster() {
     }
 }
 function instruction () {
-    alert("Mũi tên hoặc wasd để lái \r\nG để tăng tốc \r\n B để giảm tốc \r\nGhi 200 điểm để thắng \r\n(điểm tăng theo tốc chạy)");
+    alert("Arrows or WASD to drive \r\nG for Gas \r\n B for Break \r\nScore 200 points to win \r\n(score increases with speed)");
 }
